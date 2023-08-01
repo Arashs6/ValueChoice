@@ -1,4 +1,7 @@
-namespace ValueChoice.Shared
+using System.Data.SqlTypes;
+using System.Runtime.InteropServices.JavaScript;
+
+namespace ValueChoice.Shared.Models
 {
     public class WeatherForecast
     {

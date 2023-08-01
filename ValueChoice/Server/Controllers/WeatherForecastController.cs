@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ValueChoice.Shared;
+using ValueChoice.Shared.Models;
 
 namespace ValueChoice.Server.Controllers
 {
