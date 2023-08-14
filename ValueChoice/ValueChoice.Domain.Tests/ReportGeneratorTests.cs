@@ -60,8 +60,9 @@ namespace ValueChoice.Domain.Tests
         }
 
         [Theory]
-        //[InlineData(7000000,"2 ماه")]
+        [InlineData(7000000,"2 ماه")]
         [InlineData(12000000,"1 ماه و 5 روز")]
+        [InlineData(14500000,"29 روز")]
 
         public void report_calculate_missing_rent_payment_amount_when_user_pay_rent(decimal rent,string rentAmountMissing)
         {
@@ -71,7 +72,7 @@ namespace ValueChoice.Domain.Tests
 
             var result = report.CalculateReport(moneyWantToSpend, candidate);
 
-            result.MissingRentPayment.Should().Be("2 ماه");
+            result.MissingRentPayment.Should().Be(rentAmountMissing);
         }
         
         
