@@ -29,7 +29,7 @@ public class CandidateTestBuilder
         return this;
     }
 
-    public CandidateTestBuilder WithRent(int rent)
+    public CandidateTestBuilder WithRent(decimal rent)
     {
         this.Rent = rent;
 

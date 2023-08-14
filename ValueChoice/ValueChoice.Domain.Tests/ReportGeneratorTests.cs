@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using ValueChoice.Shared.Models;
+using Xunit;
 
 namespace ValueChoice.Domain.Tests
 {
@@ -47,7 +48,7 @@ namespace ValueChoice.Domain.Tests
         }
 
         [Fact]
-        public void report_generator_generate_report_when_data_is_import()
+        public void report_calculate_hourly_work_missing_after_pay()
         {
             var moneyWantToSpend = 14000000M;
             var candidate = new CandidateTestBuilder().WithIncome(7000000).Build();
@@ -56,6 +57,21 @@ namespace ValueChoice.Domain.Tests
             var result =  report.CalculateReport(moneyWantToSpend,candidate);
 
             result.HourOfWorkLose.Should().Be(332);
+        }
+
+        [Theory]
+        //[InlineData(7000000,"2 ماه")]
+        [InlineData(12000000,"1 ماه و 5 روز")]
+
+        public void report_calculate_missing_rent_payment_amount_when_user_pay_rent(decimal rent,string rentAmountMissing)
+        {
+            var moneyWantToSpend = 14000000M;
+            var candidate = new CandidateTestBuilder().WithRent(rent).Build();
+            var report = new ReportGenerator();
+
+            var result = report.CalculateReport(moneyWantToSpend, candidate);
+
+            result.MissingRentPayment.Should().Be("2 ماه");
         }
         
         
