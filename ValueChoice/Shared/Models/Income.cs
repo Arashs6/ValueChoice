@@ -2,5 +2,9 @@ namespace ValueChoice.Shared.Models;
 
 public class Income
 {
-    public Money Money { get; set; }
+    public Income(Money money)
+    {
+        this.Money = money;
+    }
+    public Money Money { get;private set; }
 }
